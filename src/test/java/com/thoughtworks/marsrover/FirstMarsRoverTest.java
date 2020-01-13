@@ -57,13 +57,23 @@ public class FirstMarsRoverTest {
 
   @Test
   public void return_X10_Y6_NORTH_for_MarsRover_X5_Y6_NORTH_and_moveForward_5_times() {
-    MarsRover marsRover = new MarsRover(5, 6, SOUTH);
+    MarsRover marsRover = new MarsRover(5, 6, NORTH);
     List<Commander> commanders =
         IntStream.rangeClosed(1, 5)
             .mapToObj(idx -> Commander.MOVE_FORWARD)
             .collect(Collectors.toList());
     marsRover.receiveCommanders(commanders);
-    assertEquals(marsRover.getPos(), Position.of(10, 6, SOUTH));
+    assertEquals(marsRover.getPos(), Position.of(10, 6, NORTH));
   }
 
+  @Test
+  public void return_X5_Y6_SOUTH_for_MarsRover_X5_Y6_NORTH_and_turnLeft_2_times() {
+    MarsRover marsRover = new MarsRover(5, 6, NORTH);
+    List<Commander> commanders =
+        IntStream.rangeClosed(1, 2)
+                 .mapToObj(idx -> Commander.TURN_LEFT)
+                 .collect(Collectors.toList());
+    marsRover.receiveCommanders(commanders);
+    assertEquals(marsRover.getPos(), Position.of(5, 6, SOUTH));
+  }
 }

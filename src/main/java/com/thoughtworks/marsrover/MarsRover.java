@@ -34,6 +34,9 @@ public class MarsRover {
           if (commander == Commander.MOVE_FORWARD) {
             this.moveForward();
           }
+          if (commander == Commander.TURN_LEFT) {
+            this.turnLeft();
+          }
         });
   }
 }
