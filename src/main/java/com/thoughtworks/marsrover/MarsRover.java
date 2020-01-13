@@ -1,5 +1,7 @@
 package com.thoughtworks.marsrover;
 
+import java.util.List;
+
 public class MarsRover {
   private Position position;
 
@@ -24,5 +26,14 @@ public class MarsRover {
     this.position =
         Position.of(
             position.getX(), position.getY(), Direction.getPrevious(position.getDirection()));
+  }
+
+  public void receiveCommanders(List<Commander> commanderList) {
+    commanderList.forEach(
+        commander -> {
+          if (commander == Commander.MOVE_FORWARD) {
+            this.moveForward();
+          }
+        });
   }
 }
