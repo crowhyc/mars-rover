@@ -6,6 +6,7 @@ import static com.thoughtworks.marsrover.Direction.SOUTH;
 import static com.thoughtworks.marsrover.Direction.WEST;
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -86,5 +87,12 @@ public class FirstMarsRoverTest {
             .collect(Collectors.toList());
     marsRover.receiveCommanders(commanders);
     assertEquals(marsRover.getPos(), Position.of(5, 6, WEST));
+  }
+
+  @Test
+      public void return_X5_Y5_for_MarsRover_X5_Y6_WEST_and_Move_forward_1_times(){
+    MarsRover marsRover = new MarsRover(5, 6, WEST);
+    marsRover.moveForward();
+    assertEquals(marsRover.getPos(), Position.of(5, 5, WEST));
   }
 }

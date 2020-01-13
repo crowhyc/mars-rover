@@ -14,7 +14,12 @@ public class MarsRover {
   }
 
   public void moveForward() {
-    this.position = Position.of(position.getX() + 1, position.getY(), position.getDirection());
+    if (position.getDirection() == Direction.NORTH) {
+      this.position = Position.of(position.getX() + 1, position.getY(), position.getDirection());
+    }
+    if (position.getDirection() == Direction.WEST) {
+      this.position = Position.of(position.getX(), position.getY() - 1, position.getDirection());
+    }
   }
 
   public void turnLeft() {
