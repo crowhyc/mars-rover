@@ -89,16 +89,23 @@ public class FirstMarsRoverTest {
   }
 
   @Test
-  public void return_X5_Y5_for_MarsRover_X5_Y6_WEST_and_Move_forward_1_times() {
+  public void return_X5_Y5_for_MarsRover_X5_Y6_WEST_and_Move_forward_1_time() {
     MarsRover marsRover = new MarsRover(5, 6, WEST);
     marsRover.moveForward();
     assertEquals(marsRover.getPos(), Position.of(5, 5, WEST));
   }
 
   @Test
-  public void return_X4_Y6_for_MarsRover_X5_Y6_SOUTH_and_Move_forward_1_times() {
+  public void return_X4_Y6_for_MarsRover_X5_Y6_SOUTH_and_Move_forward_1_time() {
     MarsRover marsRover = new MarsRover(5, 6, SOUTH);
     marsRover.moveForward();
     assertEquals(marsRover.getPos(), Position.of(4, 6, SOUTH));
+  }
+
+  @Test
+  public void return_X5_Y7_for_MarsRover_X5_Y6_EAST_and_move_forward_1_time() {
+    MarsRover marsRover = new MarsRover(5, 6, EAST);
+    marsRover.moveForward();
+    assertEquals(marsRover.getPos(), Position.of(5, 7, EAST));
   }
 }

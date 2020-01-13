@@ -1,5 +1,6 @@
 package com.thoughtworks.marsrover;
 
+import static com.thoughtworks.marsrover.Direction.EAST;
 import static com.thoughtworks.marsrover.Direction.NORTH;
 import static com.thoughtworks.marsrover.Direction.SOUTH;
 import static com.thoughtworks.marsrover.Direction.WEST;
@@ -28,6 +29,10 @@ public class MarsRover {
     }
     if (position.getDirection() == SOUTH) {
       this.position = Position.of(position.getX() - 1, position.getY(), position.getDirection());
+    }
+    if (position.getDirection() == EAST) {
+
+      this.position = Position.of(position.getX(), position.getY() + 1, position.getDirection());
     }
   }
 
