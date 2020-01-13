@@ -15,6 +15,16 @@ public enum Direction {
     this.idx = idx;
   }
 
+  public static Direction getPrevious(Direction direction) {
+    if (direction.getIdx() == 1) {
+      return EAST;
+    }
+    return Arrays.stream(Direction.values())
+        .filter(d -> d.idx == direction.getIdx() - 1)
+        .findFirst()
+        .get();
+  }
+
   public int getIdx() {
     return idx;
   }

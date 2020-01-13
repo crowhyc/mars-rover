@@ -19,4 +19,10 @@ public class MarsRover {
     this.position =
         Position.of(position.getX(), position.getY(), Direction.getNext(position.getDirection()));
   }
+
+  public void turnRight() {
+    this.position =
+        Position.of(
+            position.getX(), position.getY(), Direction.getPrevious(position.getDirection()));
+  }
 }
