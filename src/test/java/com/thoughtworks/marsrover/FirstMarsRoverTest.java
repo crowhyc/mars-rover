@@ -1,11 +1,15 @@
 package com.thoughtworks.marsrover;
 
+import static com.thoughtworks.marsrover.Commander.MOVE_FORWARD;
+import static com.thoughtworks.marsrover.Commander.TURN_LEFT;
+import static com.thoughtworks.marsrover.Commander.TURN_RIGHT;
 import static com.thoughtworks.marsrover.Direction.EAST;
 import static com.thoughtworks.marsrover.Direction.NORTH;
 import static com.thoughtworks.marsrover.Direction.SOUTH;
 import static com.thoughtworks.marsrover.Direction.WEST;
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -59,9 +63,7 @@ public class FirstMarsRoverTest {
   public void return_X10_Y6_NORTH_for_MarsRover_X5_Y6_NORTH_and_moveForward_5_times() {
     MarsRover marsRover = new MarsRover(5, 6, NORTH);
     List<Commander> commanders =
-        IntStream.rangeClosed(1, 5)
-            .mapToObj(idx -> Commander.MOVE_FORWARD)
-            .collect(Collectors.toList());
+        IntStream.rangeClosed(1, 5).mapToObj(idx -> MOVE_FORWARD).collect(Collectors.toList());
     marsRover.receiveCommanders(commanders);
     assertEquals(marsRover.getPos(), Position.of(10, 6, NORTH));
   }
@@ -70,9 +72,7 @@ public class FirstMarsRoverTest {
   public void return_X5_Y6_SOUTH_for_MarsRover_X5_Y6_NORTH_and_turnLeft_2_times() {
     MarsRover marsRover = new MarsRover(5, 6, NORTH);
     List<Commander> commanders =
-        IntStream.rangeClosed(1, 2)
-            .mapToObj(idx -> Commander.TURN_LEFT)
-            .collect(Collectors.toList());
+        IntStream.rangeClosed(1, 2).mapToObj(idx -> TURN_LEFT).collect(Collectors.toList());
     marsRover.receiveCommanders(commanders);
     assertEquals(marsRover.getPos(), Position.of(5, 6, SOUTH));
   }
@@ -81,9 +81,7 @@ public class FirstMarsRoverTest {
   public void return_X5_Y6_WEST_for_MarsRover_X5_Y6_NORTH_and_turnRight_3_times() {
     MarsRover marsRover = new MarsRover(5, 6, NORTH);
     List<Commander> commanders =
-        IntStream.rangeClosed(1, 3)
-            .mapToObj(idx -> Commander.TURN_RIGHT)
-            .collect(Collectors.toList());
+        IntStream.rangeClosed(1, 3).mapToObj(idx -> TURN_RIGHT).collect(Collectors.toList());
     marsRover.receiveCommanders(commanders);
     assertEquals(marsRover.getPos(), Position.of(5, 6, WEST));
   }
@@ -107,5 +105,29 @@ public class FirstMarsRoverTest {
     MarsRover marsRover = new MarsRover(5, 6, EAST);
     marsRover.moveForward();
     assertEquals(marsRover.getPos(), Position.of(5, 7, EAST));
+  }
+
+  @Test
+  public void return_X3_Y5_for_MarRover_X5_Y6_NORTH_with_multiple_move_forward_and_turn() {
+    MarsRover marsRover = new MarsRover(5, 6, NORTH);
+    List<Commander> commanders = new ArrayList<>();
+    commanders.add(MOVE_FORWARD);
+    commanders.add(TURN_LEFT);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(TURN_LEFT);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(TURN_LEFT);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(TURN_RIGHT);
+    commanders.add(MOVE_FORWARD);
+    commanders.add(MOVE_FORWARD);
+    marsRover.receiveCommanders(commanders);
+    assertEquals(marsRover.getPos(), Position.of(2, 7, SOUTH));
   }
 }
