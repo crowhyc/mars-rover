@@ -10,4 +10,8 @@ public class MarsRover {
   public Position getPos() {
     return position;
   }
+
+  public void moveForward() {
+    this.position = Position.of(position.getX() + 1, position.getY(), position.getDirection());
+  }
 }

@@ -20,4 +20,10 @@ public class FirstMarsRoverTest {
     assertEquals(marsRover.getPos(), Position.of(5, 6, NORTH));
   }
 
+  @Test
+  public void return_X6_Y6_for_MarRover_move_single_step() {
+    MarsRover marsRover = new MarsRover(5, 6, NORTH);
+    marsRover.moveForward();
+    assertEquals(marsRover.getPos(), Position.of(6, 6, NORTH));
+  }
 }
