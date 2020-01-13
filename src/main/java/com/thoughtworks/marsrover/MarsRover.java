@@ -4,7 +4,7 @@ public class MarsRover {
   private Position position;
 
   public MarsRover(int xPos, int yPos, Direction north) {
-    this.position = Position.of(xPos, yPos,north);
+    this.position = Position.of(xPos, yPos, north);
   }
 
   public Position getPos() {
@@ -13,5 +13,10 @@ public class MarsRover {
 
   public void moveForward() {
     this.position = Position.of(position.getX() + 1, position.getY(), position.getDirection());
+  }
+
+  public void turnLeft() {
+    this.position =
+        Position.of(position.getX(), position.getY(), Direction.getNext(position.getDirection()));
   }
 }
