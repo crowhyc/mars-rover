@@ -1,6 +1,6 @@
 package com.thoughtworks.marsrover.second;
 
-import java.util.function.Function;
+import java.util.List;
 
 public class SecondMarsRover {
 
@@ -10,11 +10,15 @@ public class SecondMarsRover {
     this.roverPosition = new RoverPosition(xPos, yPos, secondDirection);
   }
 
-  public void executeCommander(Function<RoverPosition, RoverPosition> commander) {
-    this.roverPosition = commander.apply(this.roverPosition);
+  public void executeCommand(RoverCommand commander) {
+    this.roverPosition = commander.getCommand().apply(this.roverPosition);
   }
 
   public RoverPosition getRoverPosition() {
     return this.roverPosition;
+  }
+
+  public void executeCommanders(List<RoverCommand> commandList) {
+    commandList.forEach(this::executeCommand);
   }
 }
