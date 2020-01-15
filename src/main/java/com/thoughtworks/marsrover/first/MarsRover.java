@@ -1,11 +1,11 @@
-package com.thoughtworks.marsrover;
+package com.thoughtworks.marsrover.first;
 
-import static com.thoughtworks.marsrover.Direction.EAST;
-import static com.thoughtworks.marsrover.Direction.NORTH;
-import static com.thoughtworks.marsrover.Direction.SOUTH;
-import static com.thoughtworks.marsrover.Direction.WEST;
-import static com.thoughtworks.marsrover.Direction.getNext;
-import static com.thoughtworks.marsrover.Direction.getPrevious;
+import static com.thoughtworks.marsrover.first.Direction.EAST;
+import static com.thoughtworks.marsrover.first.Direction.NORTH;
+import static com.thoughtworks.marsrover.first.Direction.SOUTH;
+import static com.thoughtworks.marsrover.first.Direction.WEST;
+import static com.thoughtworks.marsrover.first.Direction.getNext;
+import static com.thoughtworks.marsrover.first.Direction.getPrevious;
 
 import java.util.List;
 

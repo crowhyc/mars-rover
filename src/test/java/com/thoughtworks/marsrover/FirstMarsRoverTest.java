@@ -1,14 +1,17 @@
 package com.thoughtworks.marsrover;
 
-import static com.thoughtworks.marsrover.Commander.MOVE_FORWARD;
-import static com.thoughtworks.marsrover.Commander.TURN_LEFT;
-import static com.thoughtworks.marsrover.Commander.TURN_RIGHT;
-import static com.thoughtworks.marsrover.Direction.EAST;
-import static com.thoughtworks.marsrover.Direction.NORTH;
-import static com.thoughtworks.marsrover.Direction.SOUTH;
-import static com.thoughtworks.marsrover.Direction.WEST;
+import static com.thoughtworks.marsrover.first.Commander.MOVE_FORWARD;
+import static com.thoughtworks.marsrover.first.Commander.TURN_LEFT;
+import static com.thoughtworks.marsrover.first.Commander.TURN_RIGHT;
+import static com.thoughtworks.marsrover.first.Direction.EAST;
+import static com.thoughtworks.marsrover.first.Direction.NORTH;
+import static com.thoughtworks.marsrover.first.Direction.SOUTH;
+import static com.thoughtworks.marsrover.first.Direction.WEST;
 import static org.junit.Assert.assertEquals;
 
+import com.thoughtworks.marsrover.first.Commander;
+import com.thoughtworks.marsrover.first.MarsRover;
+import com.thoughtworks.marsrover.first.Position;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

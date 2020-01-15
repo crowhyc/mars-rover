@@ -1,5 +1,7 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.first.Dependency;
+import com.thoughtworks.marsrover.first.HelloWorld;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

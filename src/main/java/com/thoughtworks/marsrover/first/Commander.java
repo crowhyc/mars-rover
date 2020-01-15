@@ -1,4 +1,4 @@
-package com.thoughtworks.marsrover;
+package com.thoughtworks.marsrover.first;
 
 public enum Commander {
   MOVE_FORWARD,
