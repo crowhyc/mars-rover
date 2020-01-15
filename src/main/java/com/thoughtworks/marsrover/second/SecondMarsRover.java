@@ -1,18 +1,20 @@
 package com.thoughtworks.marsrover.second;
 
+import java.util.function.Function;
+
 public class SecondMarsRover {
 
-  private RoverLocation roverLocation;
+  private RoverPosition roverPosition;
 
-  public SecondMarsRover(int xPos, int yPos) {
-    this.roverLocation = new RoverLocation(xPos, yPos);
+  public SecondMarsRover(int xPos, int yPos, SecondDirection secondDirection) {
+    this.roverPosition = new RoverPosition(xPos, yPos, secondDirection);
   }
 
-  public void executeCommander(RoverCommander commander) {
-    this.roverLocation = commander.execute(this.roverLocation);
+  public void executeCommander(Function<RoverPosition, RoverPosition> commander) {
+    this.roverPosition = commander.apply(this.roverPosition);
   }
 
-  public RoverLocation getRoverLocation() {
-    return this.roverLocation;
+  public RoverPosition getRoverPosition() {
+    return this.roverPosition;
   }
 }
