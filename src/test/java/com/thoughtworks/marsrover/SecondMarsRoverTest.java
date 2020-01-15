@@ -2,6 +2,7 @@ package com.thoughtworks.marsrover;
 
 import static com.thoughtworks.marsrover.second.SecondDirection.EAST;
 import static com.thoughtworks.marsrover.second.SecondDirection.NORTH;
+import static com.thoughtworks.marsrover.second.SecondDirection.SOUTH;
 import static com.thoughtworks.marsrover.second.SecondDirection.WEST;
 import static junit.framework.Assert.assertEquals;
 
@@ -10,7 +11,6 @@ import com.thoughtworks.marsrover.second.RoverPosition;
 import com.thoughtworks.marsrover.second.SecondMarsRover;
 import java.util.ArrayList;
 import java.util.List;
-import javax.crypto.spec.RC2ParameterSpec;
 import org.junit.Test;
 
 public class SecondMarsRoverTest {
@@ -18,7 +18,7 @@ public class SecondMarsRoverTest {
   @Test
   public void return_x6_y6_NORTH_for_receive_move_command() {
     SecondMarsRover marsRover = new SecondMarsRover(5, 6, NORTH);
-    marsRover.executeCommand( RoverCommand.MOVE);
+    marsRover.executeCommand(RoverCommand.MOVE);
     assertEquals(marsRover.getRoverPosition(), new RoverPosition(6, 6, NORTH));
   }
 
@@ -37,7 +37,7 @@ public class SecondMarsRoverTest {
   }
 
   @Test
-  public void return_x7_y6_EAST_for_receive_multiple_commands() {
+  public void return_x7_y6_WEST_for_receive_multiple_commands() {
     SecondMarsRover marsRover = new SecondMarsRover(5, 6, NORTH);
     List<RoverCommand> commandList = new ArrayList<>();
     commandList.add(RoverCommand.MOVE);
@@ -45,5 +45,17 @@ public class SecondMarsRoverTest {
     commandList.add(RoverCommand.TURN_LEFT);
     marsRover.executeCommanders(commandList);
     assertEquals(marsRover.getRoverPosition(), new RoverPosition(7, 6, WEST));
+  }
+
+  @Test
+  public void return_x6_y5_SOUTH_for_receive_multiple_commands() {
+    SecondMarsRover marsRover = new SecondMarsRover(5, 6, NORTH);
+    List<RoverCommand> commandList = new ArrayList<>();
+    commandList.add(RoverCommand.MOVE);
+    commandList.add(RoverCommand.TURN_LEFT);
+    commandList.add(RoverCommand.MOVE);
+    commandList.add(RoverCommand.TURN_LEFT);
+    marsRover.executeCommanders(commandList);
+    assertEquals(marsRover.getRoverPosition(), new RoverPosition(6, 5, SOUTH));
   }
 }

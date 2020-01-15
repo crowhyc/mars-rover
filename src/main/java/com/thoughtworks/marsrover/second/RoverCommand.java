@@ -4,8 +4,19 @@ import java.util.function.Function;
 
 public enum RoverCommand {
   MOVE(
-      (RoverPosition location) ->
-          new RoverPosition(location.getX() + 1, location.getY(), location.getDirection())),
+      (RoverPosition location) -> {
+        switch (location.getDirection()) {
+          case NORTH:
+            return new RoverPosition(location.getX() + 1, location.getY(), location.getDirection());
+          case WEST:
+            return new RoverPosition(location.getX(), location.getY() - 1, location.getDirection());
+          case SOUTH:
+            return new RoverPosition(location.getX() - 1, location.getY(), location.getDirection());
+          case EAST:
+            return new RoverPosition(location.getX(), location.getY() + 1, location.getDirection());
+        }
+        return location;
+      }),
   TURN_LEFT(
       (RoverPosition loc) ->
           new RoverPosition(loc.getX(), loc.getY(), loc.getDirection().getNext())),
